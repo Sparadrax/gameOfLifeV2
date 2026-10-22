@@ -1,0 +1,25 @@
+/* Game of Life with a finite board. Typed-array buffers separate the current generation from the next; live cells share instanced geometry.
+ * Page-specific layout and controls; shared theme colors are supplied by /Theme.css.
+ */
+html, body { height: 100%; margin: 0; }
+body { display: flex; flex-direction: column; height: 100vh; height: 100dvh; background: #0b1220; }
+#nav-placeholder { flex: 0 0 auto; position: sticky; top: 0; z-index: 1030; background: #fff; }
+#scene-container { position: relative; flex: 1 1 0; min-height: 0; overflow: hidden; }
+#scene-container canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; touch-action: none; }
+.scene-info { position: absolute; top: 20px; left: 20px; width: 270px; padding: 20px; color: #e3edf7; background: #101e30ed; border: 1px solid #2c4357; border-radius: 10px; z-index: 1; }
+.scene-info h1 { font-size: 1.4rem; margin: 0 0 8px; }
+.scene-info p { margin: 0 0 16px; color: #a7bccf; font-size: .85rem; }
+.scene-info label { display: flex; justify-content: space-between; font-size: .85rem; margin: 12px 0 6px; }
+.scene-info output { color: #64e4b8; }
+.scene-info input[type=range] { width: 100%; accent-color: #64e4b8; }
+.scene-info small { display: block; margin-top: 8px; color: #a7bccf; font-size: .72rem; }
+.life-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 18px 0; }
+.scene-info .life-stats { font-size: .8rem; margin-bottom: 8px; }
+#scene-error { position: absolute; bottom: 20px; left: 20px; right: 20px; padding: 16px; color: #fff; background: #722c36; border-radius: 8px; z-index: 2; }
+/* Stack or resize the project layout on narrower screens. */
+@media (max-width: 767.98px) {
+    #scene-container { display: flex; flex-direction: column; flex: 0 0 auto; height: 780px; min-height: 780px; }
+    .scene-info { position: relative; top: auto; left: auto; width: auto; margin: 12px; padding: 14px; }
+    #scene-container canvas { position: relative; inset: auto; flex: 1; min-height: 350px; }
+    .life-actions { grid-template-columns: repeat(4, 1fr); }
+}
